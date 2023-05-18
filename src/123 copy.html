@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>检测切屏</title>
+</head>
+<body>
+
+	<h1>检测切屏</h1>
+	<p>本页面会检测您是否切换到其他应用程序或桌面。</p>
+
+	<div id="output"></div>
+
+	<script>
+		// 输出信息
+		function output(eventType) {
+			const outputDiv = document.getElementById("output");
+			const p = document.createElement("p");
+			const text = document.createTextNode(eventType + ": " + Date.now());
+			p.appendChild(text);
+			outputDiv.appendChild(p);
+		}
+
+		// 检测页面是否被隐藏
+		document.addEventListener("visibilitychange", function() {
+			if (document.hidden) {
+				output("visibilitychange");
+			}
+		});
+
+		// 检测浏览器标签栏是否失去焦点
+		window.addEventListener("blur", function() {
+			output("blur");
+		});
+
+		// 检测浏览器窗口是否失去焦点
+		window.addEventListener("focusout", function() {
+			output("focusout");
+		});
+
+		// 检测鼠标是否离开浏览器窗口
+		document.addEventListener("mouseleave", function() {
+			output("mouseleave");
+		});
+
+		// 检测用户是否按下Alt+Tab键切换窗口
+		document.addEventListener("keydown", function(event) {
+			if (event.altKey && event.code === "Tab") {
+				output("keydown-Alt+Tab");
+			}
+		});
+
+		// 检测用户是否按下Windows键切换到开始屏幕
+		document.addEventListener("keydown", function(event) {
+			if (event.metaKey && event.code === "KeyD") {
+				output("keydown-Win+D");
+			}
+		});
+
+		// 检测用户是否按下Ctrl+Alt+Del键切换到登录屏幕
+		document.addEventListener("keydown", function(event) {
+			if (event.ctrlKey && event.altKey && event.code === "Delete") {
+				output("keydown-Ctrl+Alt+Del");
+			}
+		});
+	</script>
+
+</body>
+</html>

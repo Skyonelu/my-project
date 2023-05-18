@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello word</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+//全局组件  
+</body>
+<script>
+    const Demo = {
+        template: `<div>hello word1</div>`,
+    }
+    app.component('demo12', {})
+    const app = Vue.createApp({
+        components: {'demo1':Demo},
+        data() {
+            return {
+                messages: 'hello word',
+            }
+        },
+
+
+        template: `
+            <demo1>
+            <demo12>
+            `
+    });
+
+    const vm = app.mount('#root')
+</script>
+
+<style>
+    .red {
+        color: brown;
+    }
+    .blue {
+        color: blue;
+    }
+</style>
+</html>

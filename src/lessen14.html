@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello word</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+<!-- //全局组件   -->
+</body>
+<script>
+
+    const app = Vue.createApp({
+        data() {
+            return {
+                'num':123,
+            }
+        },
+        template: `
+            <div><test :content="num"></test></div>
+            `
+    });
+    //type: String,Boolean,Array,Object,Function,
+    //required 必填
+    //default: 默认值
+    //va
+    app.component('test', {
+        props: {
+            content: {
+                type: Number,
+                required: true,
+                validator: function (value) {
+                    return value > 11110;
+                },
+            }
+        },
+        template: `<div>{{typeof content}}</div>`,
+    });
+    const vm = app.mount('#root')
+</script>
+
+<style>
+    .red {
+        color: brown;
+    }
+    .blue {
+        color: blue;
+    }
+</style>
+</html>

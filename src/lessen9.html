@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello word</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                messages: 'hello world',
+                count: 1
+            }
+        },
+        methods: {
+            handleClick(num,event) {
+                this.count++
+                console.log(event)
+            },
+            handlekeydown(event) {
+                console.log(event)
+            }
+        },
+
+        template: `
+            <div @keydown.enter="handlekeydown($event.key)">aaaa</div>
+            {{count}}
+            <button @click.left="handleClick(2,$event),handleClick(3,$event)">button</button>
+            `
+    });
+    app.component('demo', {
+        template: `
+        <div>single</div>
+        `,
+    })
+    const vm = app.mount('#root')
+</script>
+
+<style>
+    .red {
+        color: brown;
+    }
+    .blue {
+        color: blue;
+    }
+</style>
+</html>

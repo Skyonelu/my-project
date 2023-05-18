@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello word</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                messages: [],
+                messages1: "",
+                messages3: "",
+                messages4: "hello",
+                messages5: "",
+                options: [
+                    {text: "A",value: "A"},
+                    {text: "B",value: "B"},
+                    {text: "C",value: "C"},
+                ]
+            }
+        },
+
+
+        template: `
+            <div>
+                {{  messages}}
+                jack <input type="checkbox" v-model="messages" value="jack"/>
+                jack1 <input type="checkbox" v-model="messages" value="jack1"/>
+                jack2 <input type="checkbox" v-model="messages" value="jack2"/>
+                <br/>
+                {{  messages1}}
+                jack <input type="radio" v-model="messages1" value="jack"/>
+                jack1 <input type="radio" v-model="messages1" value="jack1"/>
+                jack2 <input type="radio" v-model="messages1" value="jack2"/>
+                <br/>
+                {{  messages3}}
+                <select v-model="messages3">
+                    <option v-for="option in options" :value="option.value">{{option.text}}</option>
+                </select>
+                <br/>
+                {{  messages4}}
+                jack <input type="checkbox" v-model="messages4" true-value='hello' false-value='world' />
+                <br/>
+                {{  messages5}}
+                <input  v-model.lazy="messages5" />
+                <input  v-model.trim="messages5" />
+
+
+            `
+    });
+    app.component('demo', {
+        template: `
+        <div>single</div>
+        `,
+    })
+    const vm = app.mount('#root')
+</script>
+
+<style>
+    .red {
+        color: brown;
+    }
+    .blue {
+        color: blue;
+    }
+</style>
+</html>
