@@ -1,19 +1,23 @@
 <template>
-  <div>
-
+  <div id="app">
+    <h1>Welcome to My Vue App!</h1>
+    <MapComponent /> <!-- 显示中国地图的组件 -->
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'App'
+import MapComponent from './MapComponent.vue'
+
+export default {
+  components: {
+    MapComponent
   }
-  beforeCreate () {
-    console.log('beforeCreate');
-  },
-  v-for
+}
 </script>
 
-<style lang="scss" scoped>
-
+<style>
+#app {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
 </style>
